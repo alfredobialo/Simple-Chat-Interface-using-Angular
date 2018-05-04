@@ -1,0 +1,53 @@
+div.app-bar
+{
+    background-color: #248acc;
+    background-image: linear-gradient(#248acc, #2062a7);
+    color : white;
+
+}
+div.message-area
+{
+    flex: 6;
+    border: solid 2px #dbf7fa;
+    /*padding : 10px;*/
+    overflow: auto;
+    border-radius: 10px 10px 4px 4px ;
+
+}
+div.message-sender
+{
+    background-color: #fafdfd;
+    flex : 1;
+    border-radius: 4px;
+}
+div.hover:hover
+{
+    transition: all linear 200ms;
+    background-color: #eafbf4;
+    box-shadow: 0 2px 3px rgba(161, 167, 183, 0.55);
+}
+div.format-message
+{
+    border-left: #6aba43 4px solid;
+    padding-left: 20px;
+}
+.flex-1
+{
+   flex-grow: 1;
+}
+.popover
+{
+    max-width: none;
+}
+div.scale-images div>img
+{
+    transition: all linear 300ms;
+    /*transform: scale(1.6);*/
+    width : 100px;
+    height: 100px;
+}
+div.scale-images div
+{
+    width : 100px !important;
+    height: 100px !important;
+}
