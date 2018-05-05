@@ -5,18 +5,21 @@ import {IApiResponse} from './ApiResponse';
 const BASE_ENDPOINT = "http://api.giphy.com/v1/";
 const API_KEY = "TDX40QqeA9iYFCnjEsm6TGHIAeppSkJH";
 const GIPHY_SEARCH_ENDPOINT  =`${BASE_ENDPOINT}gifs/search?api_key=${API_KEY}&`;  //gifs/search?q=funny+cat&api_key=YOUR_API_KEY
+const GIPHY_RANDOM_SEARCH_ENDPOINT  =`${BASE_ENDPOINT}gifs/random?api_key=${API_KEY}&`;
 @Injectable()
 export class GiphyApi{
     cachedSearchedResult  = [];
     constructor(private http : HttpClient)
     {}
-    getSearchEndPointTest(query : string, pageSize : number=5, currentPage : number=0):string
+    buildUrl(query : string, pageSize : number=5, currentPage : number=0, endPointConst : string = GIPHY_SEARCH_ENDPOINT):string
     {
-        return `${GIPHY_SEARCH_ENDPOINT}limit=${pageSize}&offset=${currentPage}&q=${query}`;
+        return `${endPointConst}limit=${pageSize}&offset=${currentPage}&q=${query}`;
     }
     searchGifs(query : string, pageSize : number  = 5, currentPage : number = 0)
     {
-        return this.http.get<IApiResponse>(this.getSearchEndPointTest(query, pageSize, currentPage));
+
+        const url  =  this.buildUrl(query, pageSize, currentPage);
+        return this.http.get<IApiResponse>(url);
 
     }
     setCacheResult(result)
